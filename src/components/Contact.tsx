@@ -36,11 +36,15 @@ export const Contact = () => {
                     <span>📧</span>
                     <span>erikal20w@gmail.com</span>
                   </div>
+                  <div className="flex items-center justify-center md:justify-start gap-3">
+                    <span>🏢</span>
+                    <span>TIN: 121715500</span>
+                  </div>
                 </div>
                 <div className="space-y-4">
                   <div className="flex items-center justify-center md:justify-start gap-3">
                     <span>📱</span>
-                    <span>WhatsApp: Available on request</span>
+                    <span>+250783385395</span>
                   </div>
                   <div className="flex items-center justify-center md:justify-start gap-3">
                     <span>📷</span>
