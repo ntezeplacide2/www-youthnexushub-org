@@ -16,7 +16,7 @@ export const Mission = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-lg leading-relaxed text-center">
-                  To empower youth through education, innovation, and digital awareness—starting with responsible gambling education and expanding into broader tools for social impact.
+                  To empower youth through education, innovation, and digital awareness, starting with responsible gambling education and expanding into broader tools for social impact.
                 </p>
               </CardContent>
             </Card>

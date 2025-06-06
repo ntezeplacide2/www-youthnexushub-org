@@ -14,7 +14,7 @@ export const Programs = () => {
     {
       icon: "💻",
       title: "Youth Digital Lab",
-      description: "Workshops that teach young people how to use tech—filmmaking, design, and data—for advocacy and empowerment.",
+      description: "Workshops that teach young people how to use tech, filmmaking, design, and data, for advocacy and empowerment.",
       status: "Active",
       bgColor: "from-blue-500 to-purple-500"
     },

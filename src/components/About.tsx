@@ -22,7 +22,7 @@ export const About = () => {
             <CardContent className="space-y-6 text-lg leading-relaxed text-gray-700">
               <p>
                 Youth Nexus Hub Ltd was born out of a simple but urgent question: 
-                <span className="font-semibold text-purple-700"> What if young people had the knowledge, tools, and support to protect themselves from digital harms—and use their skills for good?</span>
+                <span className="font-semibold text-purple-700"> What if young people had the knowledge, tools, and support to protect themselves from digital harms, and use their skills for good?</span>
               </p>
               
               <p>
@@ -31,7 +31,7 @@ export const About = () => {
               
               <div className="bg-gradient-to-r from-orange-100 to-yellow-100 p-6 rounded-lg border-l-4 border-orange-500">
                 <p className="font-medium text-gray-800">
-                  We've faced challenges, broken promises, and delays—but we've turned them into fuel. Today, Youth Nexus Hub stands as a youth-led, community-rooted initiative, determined to inspire smarter choices and brighter futures.
+                  We've faced challenges, broken promises, and delays, but we've turned them into fuel. Today, Youth Nexus Hub stands as a youth-led, community-rooted initiative, determined to inspire smarter choices and brighter futures.
                 </p>
               </div>
             </CardContent>
