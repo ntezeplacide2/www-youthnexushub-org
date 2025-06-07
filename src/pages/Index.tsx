@@ -21,6 +21,14 @@ const Index = () => {
       <footer className="bg-gradient-to-r from-purple-900 to-blue-900 text-white py-12">
         <div className="container mx-auto px-6 text-center">
           <div className="mb-6">
+            {/* Logo in Footer */}
+            <div className="mb-4 flex justify-center">
+              <img 
+                src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=120&h=80&q=80" 
+                alt="Youth Nexus Hub Ltd Logo" 
+                className="w-20 h-auto opacity-90"
+              />
+            </div>
             <h3 className="text-2xl font-bold mb-2">Youth Nexus Hub Ltd</h3>
             <p className="text-lg italic opacity-90">
               "Built by youth. Led by purpose. Powered by community."
