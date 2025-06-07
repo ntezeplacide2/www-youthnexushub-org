@@ -37,7 +37,7 @@ export const Hero = () => {
           {/* Banner Image */}
           <div className="mb-8 flex justify-center animate-fade-in delay-300">
             <img 
-              src="/lovable-uploads/742c0a16-2493-457b-90ca-b0caa99e5b3e.png" 
+              src="/lovable-uploads/0916a8bd-5dad-4971-b32c-683eb64c6ada.png" 
               alt="Youth Nexus Hub Banner - Empowering youth for a brighter future" 
               className="rounded-lg shadow-2xl max-w-full h-auto hover-scale transition-all duration-300"
             />
