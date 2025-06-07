@@ -18,11 +18,11 @@ export const Hero = () => {
       <div className="container mx-auto px-6 text-center relative z-10">
         <div className="max-w-6xl mx-auto">
           {/* Logo */}
-          <div className="mb-8 flex justify-center">
+          <div className="mb-8 flex justify-center w-full">
             <img 
               src="/lovable-uploads/fb4284a6-f2be-4f4e-ad3a-ab7cc7d660cc.png" 
               alt="Youth Nexus Hub Ltd Logo" 
-              className="w-32 h-auto md:w-40 hover-scale transition-all duration-300"
+              className="w-full max-w-2xl h-auto hover-scale transition-all duration-300"
             />
           </div>
 
