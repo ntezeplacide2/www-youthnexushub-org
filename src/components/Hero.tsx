@@ -20,7 +20,7 @@ export const Hero = () => {
           {/* Logo */}
           <div className="mb-8 flex justify-center">
             <img 
-              src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=300&h=200&q=80" 
+              src="/lovable-uploads/fb4284a6-f2be-4f4e-ad3a-ab7cc7d660cc.png" 
               alt="Youth Nexus Hub Ltd Logo" 
               className="w-32 h-auto md:w-40 hover-scale transition-all duration-300"
             />
@@ -37,7 +37,7 @@ export const Hero = () => {
           {/* Banner Image */}
           <div className="mb-8 flex justify-center animate-fade-in delay-300">
             <img 
-              src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&h=400&q=80" 
+              src="/lovable-uploads/742c0a16-2493-457b-90ca-b0caa99e5b3e.png" 
               alt="Youth Nexus Hub Banner - Empowering youth for a brighter future" 
               className="rounded-lg shadow-2xl max-w-full h-auto hover-scale transition-all duration-300"
             />

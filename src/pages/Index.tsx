@@ -24,7 +24,7 @@ const Index = () => {
             {/* Logo in Footer */}
             <div className="mb-4 flex justify-center">
               <img 
-                src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=120&h=80&q=80" 
+                src="/lovable-uploads/fb4284a6-f2be-4f4e-ad3a-ab7cc7d660cc.png" 
                 alt="Youth Nexus Hub Ltd Logo" 
                 className="w-20 h-auto opacity-90"
               />
