@@ -22,7 +22,7 @@ export const Hero = () => {
             <img 
               src="/lovable-uploads/fb4284a6-f2be-4f4e-ad3a-ab7cc7d660cc.png" 
               alt="Youth Nexus Hub Ltd Logo" 
-              className="w-full max-w-2xl h-auto hover-scale transition-all duration-300"
+              className="h-64 md:h-80 w-auto hover-scale transition-all duration-300"
             />
           </div>
 
