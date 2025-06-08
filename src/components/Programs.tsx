@@ -1,34 +1,33 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 
 export const Programs = () => {
   const programs = [
     {
       icon: "🎲",
       title: "Think Before You Bet",
-      description: "A youth-led awareness campaign using short videos, school talks, and real stories to educate about the risks of irresponsible gambling.",
+      description: "An awareness campaign using storytelling, videos, and school outreach to help youth understand the risks of irresponsible gambling.",
       status: "Active",
       bgColor: "from-red-500 to-pink-500"
     },
     {
       icon: "💻",
       title: "Youth Digital Lab",
-      description: "Workshops that teach young people how to use tech, filmmaking, design, and data, for advocacy and empowerment.",
+      description: "Workshops and training sessions in media production, data storytelling, and digital advocacy—giving youth practical skills to make impact.",
       status: "Active",
       bgColor: "from-blue-500 to-purple-500"
     },
     {
       icon: "🤝",
       title: "Community Dialogues",
-      description: "Safe spaces for open discussion between youth, parents, educators, and leaders about digital harm and social responsibility.",
+      description: "Events and safe spaces where parents, teachers, and young people come together to discuss digital harm, resilience, and responsible living.",
       status: "Active",
       bgColor: "from-green-500 to-blue-500"
     },
     {
       icon: "🌱",
       title: "Youth Impact Studio",
-      description: "An incubator-style program supporting youth-led social innovation ideas.",
+      description: "A support and mentoring hub for young changemakers building social innovation projects in their communities.",
       status: "Coming Soon",
       bgColor: "from-orange-500 to-yellow-500"
     }
@@ -39,7 +38,7 @@ export const Programs = () => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-            🚀 Our Programs
+            What We Do
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Transforming challenges into opportunities through innovative, youth-led initiatives

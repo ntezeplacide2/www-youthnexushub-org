@@ -27,11 +27,11 @@ export const Hero = () => {
           </div>
 
           <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-purple-600 via-blue-600 to-orange-500 bg-clip-text text-transparent animate-fade-in">
-            Empowering Youth to Make Smarter, Safer Choices
+            Empowering youth with skills, awareness, and purpose.
           </h1>
           
           <p className="text-xl md:text-2xl text-gray-700 mb-8 leading-relaxed animate-fade-in delay-200">
-            Youth Nexus Hub Ltd is a Rwandan-based social impact organization committed to youth empowerment through digital education, safe gambling awareness, and creative innovation.
+            Youth Nexus Hub Ltd is a youth-led social impact organization based in Rwanda. We equip young people with digital skills, safe gambling awareness, and tools to lead change in their communities.
           </p>
 
           {/* Banner Image */}
@@ -49,7 +49,7 @@ export const Hero = () => {
               size="lg" 
               className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-4 text-lg transition-all duration-300 hover-scale"
             >
-              Discover Our Story
+              👉 Explore Our Work
             </Button>
             
             <Button 
@@ -58,7 +58,7 @@ export const Hero = () => {
               onClick={() => document.getElementById('programs')?.scrollIntoView({ behavior: 'smooth' })}
               className="border-2 border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white px-8 py-4 text-lg transition-all duration-300"
             >
-              Explore Programs
+              Join the Movement
             </Button>
           </div>
         </div>

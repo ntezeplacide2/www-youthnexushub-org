@@ -10,10 +10,10 @@ export const Contact = () => {
         <div className="max-w-4xl mx-auto text-center">
           <div className="mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              📫 Get In Touch
+              Let's Connect
             </h2>
             <p className="text-xl opacity-90 max-w-2xl mx-auto">
-              Ready to join the movement? Let's build a brighter future together.
+              Whether you want to collaborate, support our work, or learn more—we'd love to hear from you.
             </p>
             <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-orange-400 mx-auto rounded-full mt-6"></div>
           </div>
@@ -30,7 +30,7 @@ export const Contact = () => {
                 <div className="space-y-4">
                   <div className="flex items-center justify-center md:justify-start gap-3">
                     <span>📍</span>
-                    <span>Based in: Kigali, Rwanda</span>
+                    <span>Kigali, Rwanda</span>
                   </div>
                   <div className="flex items-center justify-center md:justify-start gap-3">
                     <span>📧</span>

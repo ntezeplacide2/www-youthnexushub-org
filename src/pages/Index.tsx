@@ -6,6 +6,7 @@ import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
 import { Mission } from "@/components/Mission";
 import { Programs } from "@/components/Programs";
+import { Impact } from "@/components/Impact";
 import { Contact as ContactSection } from "@/components/Contact";
 
 const Index = () => {
@@ -13,8 +14,8 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-orange-50">
       <Hero />
       <About />
-      <Mission />
       <Programs />
+      <Impact />
       <ContactSection />
       
       {/* Footer */}
@@ -31,12 +32,12 @@ const Index = () => {
             </div>
             <h3 className="text-2xl font-bold mb-2">Youth Nexus Hub Ltd</h3>
             <p className="text-lg italic opacity-90">
-              "Built by youth. Led by purpose. Powered by community."
+              "Empowering youth with skills, awareness, and purpose."
             </p>
           </div>
           <div className="text-sm opacity-75">
             <p>© 2024 Youth Nexus Hub Ltd. Based in Kigali, Rwanda.</p>
-            <p className="mt-2">Empowering youth to make smarter, safer choices.</p>
+            <p className="mt-2">Youth-led, values-driven, committed to turning challenges into opportunity.</p>
           </div>
         </div>
       </footer>
