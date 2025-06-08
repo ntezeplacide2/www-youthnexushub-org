@@ -1,53 +1,36 @@
 
 import { Button } from "@/components/ui/button";
-import { ArrowDown } from "lucide-react";
 
 export const Hero = () => {
   const scrollToAbout = () => {
     document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-orange-500 opacity-10"></div>
-      <div className="absolute top-20 left-10 w-32 h-32 bg-yellow-300 rounded-full opacity-20 animate-pulse"></div>
-      <div className="absolute bottom-20 right-10 w-24 h-24 bg-green-300 rounded-full opacity-20 animate-pulse delay-1000"></div>
-      <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-pink-300 rounded-full opacity-20 animate-pulse delay-500"></div>
-      
-      <div className="container mx-auto px-6 text-center relative z-10">
-        <div className="max-w-6xl mx-auto">
-          {/* Logo */}
-          <div className="mb-8 flex justify-center w-full">
-            <img 
-              src="/lovable-uploads/fb4284a6-f2be-4f4e-ad3a-ab7cc7d660cc.png" 
-              alt="Youth Nexus Hub Ltd Logo" 
-              className="h-64 md:h-80 w-auto hover-scale transition-all duration-300"
-            />
-          </div>
+  const scrollToPrograms = () => {
+    document.getElementById('programs')?.scrollIntoView({ behavior: 'smooth' });
+  };
 
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-purple-600 via-blue-600 to-orange-500 bg-clip-text text-transparent animate-fade-in">
+  return (
+    <section id="hero" className="bg-gradient-to-br from-blue-50 to-gray-50 py-20 lg:py-32">
+      <div className="container mx-auto px-6">
+        <div className="max-w-4xl mx-auto text-center">
+          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
             Empowering youth with skills, awareness, and purpose.
           </h1>
           
-          <p className="text-xl md:text-2xl text-gray-700 mb-8 leading-relaxed animate-fade-in delay-200">
-            Youth Nexus Hub Ltd is a youth-led social impact organization based in Rwanda. We equip young people with digital skills, safe gambling awareness, and tools to lead change in their communities.
+          <p className="text-xl md:text-2xl text-gray-600 mb-4 font-medium">
+            Built in Rwanda. Impacting Africa.
           </p>
-
-          {/* Banner Image */}
-          <div className="mb-8 flex justify-center animate-fade-in delay-300">
-            <img 
-              src="/lovable-uploads/0916a8bd-5dad-4971-b32c-683eb64c6ada.png" 
-              alt="Youth Nexus Hub Banner - Empowering youth for a brighter future" 
-              className="rounded-lg shadow-2xl max-w-full h-auto hover-scale transition-all duration-300"
-            />
-          </div>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in delay-400">
+          <p className="text-lg text-gray-600 mb-12 max-w-2xl mx-auto leading-relaxed">
+            Youth Nexus Hub Ltd is a youth-led social impact organization equipping young people with digital skills, safe gambling awareness, and tools to lead change in their communities.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button 
               onClick={scrollToAbout}
               size="lg" 
-              className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-4 text-lg transition-all duration-300 hover-scale"
+              className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-4 text-lg font-semibold rounded-lg transition-all duration-300"
             >
               👉 Explore Our Work
             </Button>
@@ -55,16 +38,12 @@ export const Hero = () => {
             <Button 
               variant="outline" 
               size="lg"
-              onClick={() => document.getElementById('programs')?.scrollIntoView({ behavior: 'smooth' })}
-              className="border-2 border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white px-8 py-4 text-lg transition-all duration-300"
+              onClick={scrollToPrograms}
+              className="border-2 border-blue-900 text-blue-900 hover:bg-blue-900 hover:text-white px-8 py-4 text-lg font-semibold rounded-lg transition-all duration-300"
             >
               Join the Movement
             </Button>
           </div>
-        </div>
-        
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <ArrowDown className="w-8 h-8 text-purple-600" />
         </div>
       </div>
     </section>
