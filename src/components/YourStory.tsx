@@ -1,6 +1,15 @@
 
 import { useEffect } from 'react';
 
+// Extend the Window interface to include Tally
+declare global {
+  interface Window {
+    Tally?: {
+      loadEmbeds: () => void;
+    };
+  }
+}
+
 export const YourStory = () => {
   useEffect(() => {
     // Load Tally embed script
