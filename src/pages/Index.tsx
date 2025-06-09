@@ -1,23 +1,24 @@
-
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
 import { Programs } from "@/components/Programs";
 import { Impact } from "@/components/Impact";
 import { Contact } from "@/components/Contact";
+import { Testimonials } from "@/components/Testimonials";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       <Header />
       <Hero />
       <About />
       <Programs />
       <Impact />
+      <Testimonials />
       <Contact />
       
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
+      <footer className="bg-foreground text-background py-12">
         <div className="container mx-auto px-6 text-center">
           <div className="mb-6">
             <div className="mb-4 flex justify-center">
