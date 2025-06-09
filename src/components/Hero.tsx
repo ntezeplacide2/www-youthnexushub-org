@@ -9,12 +9,8 @@ export const Hero = () => {
     setIsVisible(true);
   }, []);
 
-  const scrollToAbout = () => {
-    document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  const scrollToPrograms = () => {
-    document.getElementById('programs')?.scrollIntoView({ behavior: 'smooth' });
+  const scrollToSection = (sectionId: string) => {
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -43,7 +39,7 @@ export const Hero = () => {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
             <Button 
-              onClick={scrollToAbout}
+              onClick={() => scrollToSection('about')}
               size="lg" 
               className="bg-primary hover:bg-accent text-primary-foreground hover:text-accent-foreground px-8 py-4 text-lg font-semibold rounded-lg transition-all duration-300 hover:scale-105 pulse-glow"
             >
@@ -53,10 +49,39 @@ export const Hero = () => {
             <Button 
               variant="outline" 
               size="lg"
-              onClick={scrollToPrograms}
+              onClick={() => scrollToSection('programs')}
               className="border-2 border-primary text-primary hover:bg-success hover:text-success-foreground px-8 py-4 text-lg font-semibold rounded-lg transition-all duration-300 hover:scale-105"
             >
               Join the Movement
+            </Button>
+          </div>
+
+          {/* Additional CTA buttons */}
+          <div className={`mt-8 flex flex-wrap gap-3 justify-center transition-all duration-1000 delay-800 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
+            <Button 
+              variant="ghost" 
+              onClick={() => scrollToSection('partner')}
+              className="text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-105"
+            >
+              🤝 Become a Partner
+            </Button>
+            
+            <Button 
+              variant="ghost" 
+              onClick={() => scrollToSection('join')}
+              className="text-primary hover:bg-success hover:text-success-foreground transition-all duration-300 hover:scale-105"
+            >
+              ✊ Join as a Volunteer
+            </Button>
+            
+            <Button 
+              variant="ghost" 
+              onClick={() => scrollToSection('your-story')}
+              className="text-primary hover:bg-accent hover:text-accent-foreground transition-all duration-300 hover:scale-105"
+            >
+              📖 Share Your Story
             </Button>
           </div>
         </div>

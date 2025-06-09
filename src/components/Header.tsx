@@ -33,7 +33,7 @@ export const Header = () => {
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-6">
           <button 
             onClick={() => scrollToSection('hero')}
             className="text-gray-700 hover:text-blue-900 font-medium transition-all duration-200 hover:scale-105"
@@ -53,6 +53,18 @@ export const Header = () => {
             Programs
           </button>
           <button 
+            onClick={() => scrollToSection('partner')}
+            className="text-gray-700 hover:text-blue-900 font-medium transition-all duration-200 hover:scale-105"
+          >
+            Partner
+          </button>
+          <button 
+            onClick={() => scrollToSection('join')}
+            className="text-gray-700 hover:text-blue-900 font-medium transition-all duration-200 hover:scale-105"
+          >
+            Join Us
+          </button>
+          <button 
             onClick={() => scrollToSection('impact')}
             className="text-gray-700 hover:text-blue-900 font-medium transition-all duration-200 hover:scale-105"
           >
@@ -67,7 +79,7 @@ export const Header = () => {
         </nav>
 
         {/* Mobile Menu Button */}
-        <button className="md:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200">
+        <button className="lg:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200">
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
           </svg>
