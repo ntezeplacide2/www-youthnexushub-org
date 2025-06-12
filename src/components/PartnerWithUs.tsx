@@ -1,36 +1,8 @@
 
-import { useEffect } from 'react';
-
-// Extend the Window interface to include Tally
-declare global {
-  interface Window {
-    Tally?: {
-      loadEmbeds: () => void;
-    };
-  }
-}
+import { useTallyForm } from '@/hooks/useTallyForm';
 
 export const PartnerWithUs = () => {
-  useEffect(() => {
-    // Load Tally embed script
-    const script = document.createElement('script');
-    script.src = 'https://tally.so/widgets/embed.js';
-    script.async = true;
-    script.onload = () => {
-      if (typeof window.Tally !== 'undefined') {
-        window.Tally.loadEmbeds();
-      }
-    };
-    document.body.appendChild(script);
-
-    return () => {
-      // Cleanup script on unmount
-      const existingScript = document.querySelector('script[src="https://tally.so/widgets/embed.js"]');
-      if (existingScript) {
-        document.body.removeChild(existingScript);
-      }
-    };
-  }, []);
+  useTallyForm();
 
   return (
     <section id="partner" className="py-16 bg-secondary">
@@ -58,6 +30,7 @@ export const PartnerWithUs = () => {
               title="Partner or Collaborate With Us"
               className="w-full h-[700px] rounded-md border-0"
               style={{ overflow: 'hidden' }}
+              sandbox="allow-scripts allow-forms allow-same-origin"
             ></iframe>
           </div>
         </div>
