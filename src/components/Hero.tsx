@@ -1,9 +1,11 @@
 
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsVisible(true);
@@ -62,7 +64,7 @@ export const Hero = () => {
           }`}>
             <Button 
               variant="ghost" 
-              onClick={() => scrollToSection('partner')}
+              onClick={() => navigate('/partner')}
               className="text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-105"
             >
               🤝 Become a Partner
@@ -70,7 +72,7 @@ export const Hero = () => {
             
             <Button 
               variant="ghost" 
-              onClick={() => scrollToSection('join')}
+              onClick={() => navigate('/join')}
               className="text-primary hover:bg-success hover:text-success-foreground transition-all duration-300 hover:scale-105"
             >
               ✊ Join as a Volunteer
@@ -78,7 +80,7 @@ export const Hero = () => {
             
             <Button 
               variant="ghost" 
-              onClick={() => scrollToSection('your-story')}
+              onClick={() => navigate('/share-story')}
               className="text-primary hover:bg-accent hover:text-accent-foreground transition-all duration-300 hover:scale-105"
             >
               📖 Share Your Story
