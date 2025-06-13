@@ -79,10 +79,28 @@ export const PortfolioPage = () => {
                   className="w-full max-w-sm mx-auto rounded-lg shadow-lg"
                 />
               </div>
-              <div className="lg:w-2/3">
+              <div className="lg:w-2/3 space-y-6">
+                <div className="text-center lg:text-left">
+                  <h3 className="text-xl font-semibold text-primary mb-3">
+                    Tech support meets digital empowerment, powering youth through safe and ethical tech.
+                  </h3>
+                </div>
+                
                 <p className="text-lg leading-relaxed text-foreground">
-                  I'm Eric — a versatile professional with experience in technical support, multimedia production, and social impact projects focused on safe gambling. I combine my skills in customer service, video production, and stakeholder engagement to create meaningful content and solutions.
+                  I'm <strong>Eric Uwitonze</strong>, a technical support specialist, digital media creator, and founder of <strong>Youth Nexus Hub Ltd</strong>, a youth-centered platform empowering young people through responsible technology use and advocacy. My work blends hands-on tech support (Power BI, remote desktop systems), multimedia storytelling (Adobe Suite, DSLR video), and community engagement to drive social impact across digital spaces.
                 </p>
+                
+                <p className="text-lg leading-relaxed text-foreground">
+                  Through Youth Nexus Hub Ltd, I envision a future where every young person in Africa is equipped to navigate and shape the digital world ethically.
+                </p>
+                
+                <div className="bg-primary/10 p-4 rounded-lg">
+                  <p className="text-lg font-medium text-primary mb-2">Let's collaborate:</p>
+                  <p className="text-foreground">
+                    I'm currently open to remote tech support opportunities, digital advocacy campaigns, and projects focused on youth empowerment through tech and media.
+                  </p>
+                </div>
+                
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
                   <div className="text-center p-4 bg-background rounded-lg shadow-sm">
                     <Code className="w-8 h-8 text-primary mx-auto mb-2" />
@@ -101,6 +119,85 @@ export const PortfolioPage = () => {
                     <p className="font-semibold text-sm">Advocacy</p>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Collaborations & Partnerships Section */}
+      <section className="py-16">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl font-bold text-center mb-12 text-primary">Collaborations & Partnerships</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+            <Card className="hover:shadow-lg transition-shadow text-center">
+              <CardHeader>
+                <CardTitle className="flex items-center justify-center gap-2 text-lg">
+                  <Code className="w-5 h-5 text-primary" />
+                  Remote Tech Support
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm">Remote technical support and IT operations</p>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-lg transition-shadow text-center">
+              <CardHeader>
+                <CardTitle className="flex items-center justify-center gap-2 text-lg">
+                  <Shield className="w-5 h-5 text-primary" />
+                  Digital Advocacy
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm">Digital advocacy and awareness campaigns</p>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-lg transition-shadow text-center">
+              <CardHeader>
+                <CardTitle className="flex items-center justify-center gap-2 text-lg">
+                  <Camera className="w-5 h-5 text-primary" />
+                  Creative Media
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm">Creative media for youth-centered initiatives</p>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-lg transition-shadow text-center">
+              <CardHeader>
+                <CardTitle className="flex items-center justify-center gap-2 text-lg">
+                  <Users className="w-5 h-5 text-primary" />
+                  Strategic Partnerships
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm">Strategic partnerships for social impact projects</p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Youth Nexus Hub Ltd Section */}
+      <section className="py-16 bg-secondary/30">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl font-bold mb-8 text-primary">Youth Nexus Hub Ltd</h2>
+            <div className="bg-background p-8 rounded-lg shadow-lg">
+              <p className="text-lg leading-relaxed text-foreground">
+                Youth Nexus Hub Ltd is a Rwanda-based digital initiative equipping youth with the skills and support to thrive in a tech-driven world. We focus on ethical digital engagement, safe online practices, and tech-based advocacy to create a more informed and empowered generation.
+              </p>
+              <div className="mt-6">
+                <Button 
+                  size="lg" 
+                  className="font-semibold"
+                  onClick={() => navigate('/')}
+                >
+                  Learn More About Our Mission
+                </Button>
               </div>
             </div>
           </div>
