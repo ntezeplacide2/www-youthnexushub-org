@@ -35,7 +35,12 @@ export const PortfolioPage = () => {
                 Technical Support | Creative Media | Social Impact Advocate
               </p>
               <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
-                <Button size="lg" variant="secondary" className="font-semibold">
+                <Button 
+                  size="lg" 
+                  variant="secondary" 
+                  className="font-semibold"
+                  onClick={() => window.open('mailto:erikal20w@gmail.com')}
+                >
                   <Mail className="w-4 h-4 mr-2" />
                   Contact Me
                 </Button>
@@ -289,19 +294,38 @@ export const PortfolioPage = () => {
               className="w-32 h-32 object-cover rounded-full border-4 border-primary-foreground/20"
             />
             <div className="space-y-4">
-              <Button size="lg" variant="secondary" className="w-full md:w-auto">
+              <Button 
+                size="lg" 
+                variant="secondary" 
+                className="w-full md:w-auto"
+                onClick={() => window.open('mailto:erikal20w@gmail.com')}
+              >
                 <Mail className="w-4 h-4 mr-2" />
-                eric@youthnexushub.com
+                erikal20w@gmail.com
               </Button>
-              <Button size="lg" variant="outline" className="w-full md:w-auto border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="w-full md:w-auto border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary"
+                onClick={() => window.open('https://linkedin.com/in/eric-uwitonze-954a3b16a', '_blank')}
+              >
                 <Linkedin className="w-4 h-4 mr-2" />
                 LinkedIn Profile
               </Button>
-              <Button size="lg" variant="outline" className="w-full md:w-auto border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="w-full md:w-auto border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary"
+                onClick={() => window.open('tel:+250783385395')}
+              >
                 <Phone className="w-4 h-4 mr-2" />
-                +250 XXX XXX XXX
+                +250 783 385 395
               </Button>
             </div>
+          </div>
+          
+          <div className="text-center opacity-80">
+            <p className="text-lg">📍 Kigali, Rwanda</p>
           </div>
         </div>
       </section>
