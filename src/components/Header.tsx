@@ -1,9 +1,11 @@
 
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,6 +53,12 @@ export const Header = () => {
             className="text-gray-700 hover:text-blue-900 font-medium transition-all duration-200 hover:scale-105"
           >
             Programs
+          </button>
+          <button 
+            onClick={() => navigate('/portfolio')}
+            className="text-gray-700 hover:text-blue-900 font-medium transition-all duration-200 hover:scale-105"
+          >
+            Portfolio
           </button>
           <button 
             onClick={() => scrollToSection('partner')}

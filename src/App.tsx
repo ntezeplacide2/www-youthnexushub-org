@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound";
 import { ShareStoryPage } from "./pages/ShareStoryPage";
 import { PartnerPage } from "./pages/PartnerPage";
 import { JoinPage } from "./pages/JoinPage";
+import { PortfolioPage } from "./pages/PortfolioPage";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,7 @@ const App = () => (
           <Route path="/share-story" element={<ShareStoryPage />} />
           <Route path="/partner" element={<PartnerPage />} />
           <Route path="/join" element={<JoinPage />} />
+          <Route path="/portfolio" element={<PortfolioPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
