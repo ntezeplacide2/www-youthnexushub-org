@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "lucide-react";
 
 export const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -37,6 +38,29 @@ export const Hero = () => {
             Youth Nexus Hub Ltd is a youth-led social impact organization equipping young people with digital skills, safe gambling awareness, and tools to lead change in their communities.
           </p>
           
+          {/* BetGuard AI Button */}
+          <div className={`flex justify-center mb-8 transition-all duration-1000 delay-100 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
+            <a 
+              href="https://betguard-ai-friend.lovable.app" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex"
+            >
+              <Button
+                size="lg"
+                className="bg-accent hover:bg-primary text-accent-foreground hover:text-primary-foreground px-8 py-4 text-lg font-bold rounded-lg transition-all duration-300 hover:scale-105 shadow-lg ring-2 ring-accent"
+                style={{
+                  letterSpacing: "0.5px",
+                }}
+              >
+                <Link className="mr-2" size={22} />
+                BetGuard AI – Your Safer Gambling Friend
+              </Button>
+            </a>
+          </div>
+
           <div className={`flex flex-col sm:flex-row gap-4 justify-center items-center transition-all duration-1000 delay-600 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
