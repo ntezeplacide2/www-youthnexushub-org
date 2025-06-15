@@ -2,16 +2,17 @@
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link as LinkIcon } from "lucide-react";
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -84,15 +85,76 @@ export const Header = () => {
           >
             Contact
           </button>
+          {/* BetGuard AI Button */}
+          <a
+            href="https://betguard-ai-friend.lovable.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ml-4"
+            tabIndex={-1}
+          >
+            <Button
+              size="lg"
+              className="flex items-center bg-yellow-400 text-black font-bold px-6 py-2 rounded-lg shadow-lg hover:bg-yellow-500 hover:text-black transition-all duration-200 border-2 border-yellow-500"
+              style={{ letterSpacing: ".5px" }}
+            >
+              <LinkIcon className="mr-2" size={20} />
+              BetGuard AI
+            </Button>
+          </a>
         </nav>
 
         {/* Mobile Menu Button */}
-        <button className="lg:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200">
+        <button
+          className="lg:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200"
+          onClick={() => setMobileMenuOpen((open) => !open)}
+          aria-label="Open Menu"
+        >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
       </div>
+      {/* Mobile Navigation Dropdown */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden absolute left-0 w-full bg-white shadow-lg px-6 pt-4 pb-6 z-50 animate-in fade-in">
+          <div className="flex flex-col gap-3">
+            <button onClick={() => { scrollToSection('hero'); setMobileMenuOpen(false); }}
+              className="text-gray-700 text-lg font-medium text-left">Home</button>
+            <button onClick={() => { scrollToSection('about'); setMobileMenuOpen(false); }}
+              className="text-gray-700 text-lg font-medium text-left">About</button>
+            <button onClick={() => { scrollToSection('programs'); setMobileMenuOpen(false); }}
+              className="text-gray-700 text-lg font-medium text-left">Programs</button>
+            <button onClick={() => { navigate('/portfolio'); setMobileMenuOpen(false); }}
+              className="text-gray-700 text-lg font-medium text-left">Portfolio</button>
+            <button onClick={() => { scrollToSection('partner'); setMobileMenuOpen(false); }}
+              className="text-gray-700 text-lg font-medium text-left">Partner</button>
+            <button onClick={() => { scrollToSection('join'); setMobileMenuOpen(false); }}
+              className="text-gray-700 text-lg font-medium text-left">Join Us</button>
+            <button onClick={() => { scrollToSection('impact'); setMobileMenuOpen(false); }}
+              className="text-gray-700 text-lg font-medium text-left">Impact</button>
+            <button onClick={() => { scrollToSection('contact'); setMobileMenuOpen(false); }}
+              className="text-gray-700 text-lg font-medium text-left">Contact</button>
+            {/* BetGuard AI Button Mobile */}
+            <a
+              href="https://betguard-ai-friend.lovable.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2"
+              tabIndex={-1}
+            >
+              <Button
+                size="lg"
+                className="w-full flex items-center bg-yellow-400 text-black font-bold px-6 py-2 rounded-lg shadow-lg hover:bg-yellow-500 hover:text-black transition-all duration-200 border-2 border-yellow-500 justify-center"
+                style={{ letterSpacing: ".5px" }}
+              >
+                <LinkIcon className="mr-2" size={20} />
+                BetGuard AI
+              </Button>
+            </a>
+          </div>
+        </div>
+      )}
     </header>
   );
 };
