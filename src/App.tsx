@@ -9,7 +9,7 @@ import NotFound from "./pages/NotFound";
 import { ShareStoryPage } from "./pages/ShareStoryPage";
 import { PartnerPage } from "./pages/PartnerPage";
 import { JoinPage } from "./pages/JoinPage";
-import { PortfolioPage } from "./pages/PortfolioPage";
+import PortfolioPage from "./pages/PortfolioPage";
 import { BlogPage } from "./pages/BlogPage";
 
 const queryClient = new QueryClient();
