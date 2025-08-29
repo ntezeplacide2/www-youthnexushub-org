@@ -28,13 +28,12 @@ export const AIChatWidget = () => {
     setIsLoading(true);
 
     try {
+      const formData = new FormData();
+      formData.append("message", input);
+
       const res = await fetch("https://uwitonze.app.n8n.cloud/webhook/ai-agent", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          sessionId: "visitor1",
-          Message: input,
-        }),
+        body: formData,
       });
 
       const data = await res.json();
