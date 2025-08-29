@@ -1,47 +1,30 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
 import { MessageCircle, X, Send } from 'lucide-react';
 
 interface ChatMessage {
-  type: 'user' | 'ai';
-  content: string;
-  timestamp: Date;
+  sender: string;
+  text: string;
 }
 
 export const AIChatWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
-      type: 'ai',
-      content: "Hi! I'm Eric's AI assistant. I can help answer questions about his work, projects, and experience. What would you like to know?",
-      timestamp: new Date()
+      sender: 'AI',
+      text: "Hi! I'm Eric's AI assistant. I can help answer questions about his work, projects, and experience. What would you like to know?"
     }
   ]);
-  const [inputMessage, setInputMessage] = useState('');
+  const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
+  async function sendMessage() {
+    if (!input.trim()) return;
 
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
-
-  const sendMessage = async (msg: string) => {
-    if (!msg.trim()) return;
-
-    // Add user message
-    const userMessage: ChatMessage = {
-      type: 'user',
-      content: msg,
-      timestamp: new Date()
-    };
-    setMessages(prev => [...prev, userMessage]);
-    setInputMessage('');
+    const userMessage = { sender: "You", text: input };
+    setMessages((prev) => [...prev, userMessage]);
     setIsLoading(true);
 
     try {
@@ -50,40 +33,28 @@ export const AIChatWidget = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           sessionId: "visitor1",
-          Message: msg
-        })
+          Message: input,
+        }),
       });
 
       const data = await res.json();
-      
-      // Add AI response
-      const aiMessage: ChatMessage = {
-        type: 'ai',
-        content: data.reply || "Sorry, I couldn't process that request.",
-        timestamp: new Date()
-      };
-      setMessages(prev => [...prev, aiMessage]);
-    } catch (error) {
-      const errorMessage: ChatMessage = {
-        type: 'ai',
-        content: "Sorry, I'm having trouble connecting right now. Please try again later.",
-        timestamp: new Date()
-      };
-      setMessages(prev => [...prev, errorMessage]);
-    } finally {
-      setIsLoading(false);
+      const botMessage = { sender: "AI", text: data.reply || "Sorry, I didn't understand." };
+      setMessages((prev) => [...prev, botMessage]);
+    } catch (err) {
+      setMessages((prev) => [
+        ...prev,
+        { sender: "AI", text: "⚠️ Error: Could not reach assistant." },
+      ]);
     }
-  };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    sendMessage(inputMessage);
-  };
+    setInput("");
+    setIsLoading(false);
+  }
 
-  const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
       e.preventDefault();
-      sendMessage(inputMessage);
+      sendMessage();
     }
   };
 
@@ -103,7 +74,7 @@ export const AIChatWidget = () => {
           <div className="bg-primary text-primary-foreground p-4 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-              <span className="font-medium">AI Assistant</span>
+              <span className="font-medium">Uwitonze's AI Assistant</span>
             </div>
             <Button
               onClick={() => setIsOpen(false)}
@@ -120,16 +91,16 @@ export const AIChatWidget = () => {
             {messages.map((message, index) => (
               <div
                 key={index}
-                className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
+                className={`flex ${message.sender === 'You' ? 'justify-end' : 'justify-start'}`}
               >
                 <div
                   className={`max-w-[80%] p-3 rounded-lg text-sm ${
-                    message.type === 'user'
+                    message.sender === 'You'
                       ? 'bg-primary text-primary-foreground'
                       : 'bg-muted text-muted-foreground'
                   }`}
                 >
-                  {message.content}
+                  <strong>{message.sender}:</strong> {message.text}
                 </div>
               </div>
             ))}
@@ -144,30 +115,30 @@ export const AIChatWidget = () => {
                 </div>
               </div>
             )}
-            <div ref={messagesEndRef} />
           </div>
 
           {/* Input */}
-          <form onSubmit={handleSubmit} className="p-4 border-t bg-background">
+          <div className="p-4 border-t bg-background">
             <div className="flex gap-2">
               <Input
-                value={inputMessage}
-                onChange={(e) => setInputMessage(e.target.value)}
-                onKeyPress={handleKeyPress}
-                placeholder="Ask me about Eric's work..."
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Type a message..."
                 className="flex-1"
+                onKeyDown={handleKeyDown}
                 disabled={isLoading}
               />
-              <Button 
-                type="submit" 
+              <Button
+                onClick={sendMessage}
+                disabled={!input.trim() || isLoading}
                 size="icon"
-                disabled={!inputMessage.trim() || isLoading}
                 className="shrink-0"
               >
                 <Send className="h-4 w-4" />
               </Button>
             </div>
-          </form>
+          </div>
         </Card>
       )}
     </div>
