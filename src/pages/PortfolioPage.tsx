@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowLeft, Mail, Phone, Github, Linkedin, Camera, Code, Users, TrendingUp, Shield, BarChart3, ExternalLink, Play, FileText, Download, MapPin, Calendar, Book, MessageCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { AIChatWidget } from "@/components/AIChatWidget";
 
 export const PortfolioPage = () => {
   const navigate = useNavigate();
@@ -537,6 +538,9 @@ export const PortfolioPage = () => {
           </div>
         </div>
       </footer>
+      
+      {/* AI Chat Widget */}
+      <AIChatWidget />
     </div>
   );
 };
