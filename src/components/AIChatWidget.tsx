@@ -9,12 +9,20 @@ interface ChatMessage {
   text: string;
 }
 
-export const AIChatWidget = () => {
+interface AIChatWidgetProps {
+  webhookUrl?: string;
+  botName?: string;
+}
+
+export const AIChatWidget = ({ 
+  webhookUrl = "https://uwitonze.app.n8n.cloud/webhook/ai-agent",
+  botName = "Uwitonze's AI Assistant"
+}: AIChatWidgetProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       sender: 'AI',
-      text: "Hi! I'm Eric's AI assistant. I can help answer questions about his work, projects, and experience. What would you like to know?"
+      text: `Hi! I'm ${botName.replace("'s AI Assistant", "")}'s AI assistant. I can help answer questions about his work, projects, and experience. What would you like to know?`
     }
   ]);
   const [input, setInput] = useState('');
@@ -31,7 +39,7 @@ export const AIChatWidget = () => {
       const formData = new FormData();
       formData.append("message", input);
 
-      const res = await fetch("https://uwitonze.app.n8n.cloud/webhook/ai-agent", {
+      const res = await fetch(webhookUrl, {
         method: "POST",
         body: formData,
       });
@@ -73,7 +81,7 @@ export const AIChatWidget = () => {
           <div className="bg-primary text-primary-foreground p-4 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-              <span className="font-medium">Uwitonze's AI Assistant</span>
+              <span className="font-medium">{botName}</span>
             </div>
             <Button
               onClick={() => setIsOpen(false)}
