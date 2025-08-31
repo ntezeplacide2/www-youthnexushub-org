@@ -44,13 +44,29 @@ export const AIChatWidget = ({
         body: formData,
       });
 
-      const data = await res.json();
-      const botMessage = { sender: "AI", text: data.reply || "Sorry, I didn't understand." };
+      if (!res.ok) {
+        throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+      }
+
+      // Check content type and parse accordingly
+      const contentType = res.headers.get("content-type");
+      let botResponse = "";
+      
+      if (contentType && contentType.includes("application/json")) {
+        const data = await res.json();
+        botResponse = data.reply || data.message || data.response || "Sorry, I didn't understand.";
+      } else {
+        // Handle plain text response
+        botResponse = await res.text();
+      }
+
+      const botMessage = { sender: "AI", text: botResponse };
       setMessages((prev) => [...prev, botMessage]);
     } catch (err) {
+      console.error("Chat error:", err);
       setMessages((prev) => [
         ...prev,
-        { sender: "AI", text: "⚠️ Error: Could not reach assistant." },
+        { sender: "AI", text: "⚠️ Error: Could not reach assistant. Please check your connection." },
       ]);
     }
 
