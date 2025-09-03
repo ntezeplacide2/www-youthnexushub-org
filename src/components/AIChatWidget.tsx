@@ -36,27 +36,25 @@ export const AIChatWidget = ({
     setIsLoading(true);
 
     try {
-      const formData = new FormData();
-      formData.append("message", input);
-
       const res = await fetch(webhookUrl, {
         method: "POST",
-        body: formData,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ message: input, sessionId: "chat-123" }), // ✅ send JSON
       });
 
       if (!res.ok) {
         throw new Error(`HTTP ${res.status}: ${res.statusText}`);
       }
 
-      // Check content type and parse accordingly
       const contentType = res.headers.get("content-type");
       let botResponse = "";
-      
+
       if (contentType && contentType.includes("application/json")) {
         const data = await res.json();
         botResponse = data.output || data.reply || data.message || data.response || "Sorry, I didn't understand.";
       } else {
-        // Handle plain text response
         botResponse = await res.text();
       }
 
