@@ -54,7 +54,7 @@ export const AIChatWidget = ({
       
       if (contentType && contentType.includes("application/json")) {
         const data = await res.json();
-        botResponse = data.reply || data.message || data.response || "Sorry, I didn't understand.";
+        botResponse = data.output || data.reply || data.message || data.response || "Sorry, I didn't understand.";
       } else {
         // Handle plain text response
         botResponse = await res.text();
