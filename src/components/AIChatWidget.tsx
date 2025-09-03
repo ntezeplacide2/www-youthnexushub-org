@@ -51,12 +51,22 @@ export const AIChatWidget = ({
       const contentType = res.headers.get("content-type");
       let botResponse = "";
 
-      if (contentType && contentType.includes("application/json")) {
-        const data = await res.json();
-        botResponse = data.output || data.reply || data.message || data.response || "Sorry, I didn't understand.";
+    if (contentType && contentType.includes("application/json")) {
+      const responseText = await res.text();
+      if (responseText.trim()) {
+        try {
+          const data = JSON.parse(responseText);
+          botResponse = data.output || data.reply || data.message || data.response || "Sorry, I didn't understand.";
+        } catch (parseError) {
+          console.error("JSON parse error:", parseError);
+          botResponse = responseText || "Sorry, I received an invalid response.";
+        }
       } else {
-        botResponse = await res.text();
+        botResponse = "Sorry, I received an empty response from the server.";
       }
+    } else {
+      botResponse = await res.text();
+    }
 
       const botMessage = { sender: "AI", text: botResponse };
       setMessages((prev) => [...prev, botMessage]);
