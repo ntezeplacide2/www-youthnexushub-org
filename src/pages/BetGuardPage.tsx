@@ -1,8 +1,9 @@
 import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Shield, Heart, Eye, ArrowRight, RotateCcw, Clock, DollarSign, BookOpen, Phone } from "lucide-react";
+import { Shield, Heart, Eye, ArrowRight, RotateCcw, Clock, DollarSign, BookOpen, Phone, X, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -96,12 +97,79 @@ function randomAck() {
 
 type Screen = "welcome" | "quiz" | "ack" | "results";
 
-const nextStepButtons = [
-  { label: "Set a spending limit", icon: DollarSign },
-  { label: "Take a break plan", icon: Clock },
-  { label: "Learn safer habits", icon: BookOpen },
-  { label: "Get support", icon: Phone },
+type NextStepKey = "spending" | "break" | "habits" | "support";
+
+const nextStepButtons: { label: string; icon: typeof DollarSign; key: NextStepKey }[] = [
+  { label: "Set a spending limit", icon: DollarSign, key: "spending" },
+  { label: "Take a break plan", icon: Clock, key: "break" },
+  { label: "Learn safer habits", icon: BookOpen, key: "habits" },
+  { label: "Get support", icon: Phone, key: "support" },
 ];
+
+const nextStepContent: Record<NextStepKey, { title: string; description: string; tips: string[]; links: { label: string; url: string }[] }> = {
+  spending: {
+    title: "Set a Spending Limit",
+    description: "Setting a clear budget before you gamble helps you stay in control. Here's how to get started:",
+    tips: [
+      "Decide on a fixed weekly amount you can afford to lose — and stick to it.",
+      "Use a budgeting app or notebook to track every bet.",
+      "Never use money meant for rent, bills, or essentials.",
+      "Set deposit limits on betting platforms (most allow this in settings).",
+      "Review your spending at the end of each week.",
+    ],
+    links: [
+      { label: "GambleAware Budget Tool", url: "https://www.begambleaware.org/" },
+      { label: "GamCare Money Advice", url: "https://www.gamcare.org.uk/" },
+    ],
+  },
+  break: {
+    title: "Take a Break Plan",
+    description: "Taking a break from gambling gives you space to reset. Try this step-by-step plan:",
+    tips: [
+      "Commit to at least 7 days with no gambling of any kind.",
+      "Delete or log out of betting apps during your break.",
+      "Fill your time with activities you enjoy — exercise, hobbies, socialising.",
+      "Tell a friend or family member about your break for accountability.",
+      "Use self-exclusion tools like GAMSTOP to block access to UK gambling sites.",
+    ],
+    links: [
+      { label: "GAMSTOP Self-Exclusion", url: "https://www.gamstop.co.uk/" },
+      { label: "TalkBanStop Support", url: "https://www.talkbanstop.com/" },
+    ],
+  },
+  habits: {
+    title: "Learn Safer Gambling Habits",
+    description: "Knowledge is power. Understanding gambling risks helps you make better choices:",
+    tips: [
+      "Treat gambling as entertainment, not a way to make money.",
+      "Set time limits as well as money limits.",
+      "Never chase losses — the odds are designed against you.",
+      "Avoid gambling when you're stressed, upset, or under the influence.",
+      "Learn how odds work — the house always has an edge.",
+    ],
+    links: [
+      { label: "BeGambleAware Resources", url: "https://www.begambleaware.org/" },
+      { label: "Young Gamers & Gamblers Education Trust", url: "https://www.ygam.org/" },
+      { label: "Youth Nexus Hub Programs", url: "/" },
+    ],
+  },
+  support: {
+    title: "Get Support",
+    description: "You don't have to face this alone. Reaching out is a sign of strength, not weakness.",
+    tips: [
+      "Talk to someone you trust — a friend, family member, or mentor.",
+      "Call the National Gambling Helpline: 0808 8020 133 (free, 24/7).",
+      "Chat online with trained advisors at GamCare.",
+      "Consider joining a peer support group.",
+      "Youth Nexus Hub is here for you — reach out to us anytime.",
+    ],
+    links: [
+      { label: "GamCare Live Chat", url: "https://www.gamcare.org.uk/" },
+      { label: "National Gambling Helpline", url: "tel:08088020133" },
+      { label: "Contact Youth Nexus Hub", url: "/partner" },
+    ],
+  },
+};
 
 const fadeVariants = {
   initial: { opacity: 0, y: 24 },
@@ -114,6 +182,8 @@ export default function BetGuardPage() {
   const [currentQ, setCurrentQ] = useState(0);
   const [answers, setAnswers] = useState<Record<number, number>>({});
   const [ackText, setAckText] = useState("");
+
+  const [activeStep, setActiveStep] = useState<NextStepKey | null>(null);
 
   const handleStart = () => {
     setScreen("quiz");
@@ -247,13 +317,49 @@ export default function BetGuardPage() {
                   <h3 className="font-semibold text-gray-900 mb-3">What would you like to do next?</h3>
                   <div className="grid grid-cols-2 gap-3">
                     {nextStepButtons.map((btn) => (
-                      <button key={btn.label} className="flex items-center gap-2 px-4 py-3 rounded-2xl border border-gray-200 bg-white hover:border-[#E91E90] hover:bg-pink-50 transition-all text-sm font-medium text-gray-800 shadow-sm hover:shadow">
+                      <button key={btn.label} onClick={() => setActiveStep(btn.key)} className="flex items-center gap-2 px-4 py-3 rounded-2xl border border-gray-200 bg-white hover:border-[#E91E90] hover:bg-pink-50 transition-all text-sm font-medium text-gray-800 shadow-sm hover:shadow">
                         <btn.icon className="w-4 h-4 text-[#E91E90]" />
                         {btn.label}
                       </button>
                     ))}
                   </div>
                 </div>
+
+                {/* Next Step Dialog */}
+                <Dialog open={!!activeStep} onOpenChange={(open) => !open && setActiveStep(null)}>
+                  <DialogContent className="max-w-md rounded-2xl">
+                    {activeStep && (
+                      <>
+                        <DialogHeader>
+                          <DialogTitle className="text-xl font-bold text-gray-900">{nextStepContent[activeStep].title}</DialogTitle>
+                          <DialogDescription className="text-gray-500">{nextStepContent[activeStep].description}</DialogDescription>
+                        </DialogHeader>
+                        <ul className="space-y-2 mt-2">
+                          {nextStepContent[activeStep].tips.map((tip, i) => (
+                            <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
+                              <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#E91E90] shrink-0" />
+                              {tip}
+                            </li>
+                          ))}
+                        </ul>
+                        <div className="mt-4 flex flex-col gap-2">
+                          {nextStepContent[activeStep].links.map((link) => (
+                            <a
+                              key={link.label}
+                              href={link.url}
+                              target={link.url.startsWith("http") ? "_blank" : undefined}
+                              rel={link.url.startsWith("http") ? "noopener noreferrer" : undefined}
+                              className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-gray-200 bg-white hover:border-[#38BDF8] hover:bg-sky-50 transition-all text-sm font-medium text-gray-800"
+                            >
+                              <ExternalLink className="w-3.5 h-3.5 text-[#38BDF8]" />
+                              {link.label}
+                            </a>
+                          ))}
+                        </div>
+                      </>
+                    )}
+                  </DialogContent>
+                </Dialog>
 
                 <Button onClick={handleRestart} variant="outline" className="rounded-full mx-auto mt-4">
                   <RotateCcw className="w-4 h-4 mr-1" /> Start Over
