@@ -183,6 +183,8 @@ export default function BetGuardPage() {
   const [answers, setAnswers] = useState<Record<number, number>>({});
   const [ackText, setAckText] = useState("");
 
+  const [activeStep, setActiveStep] = useState<NextStepKey | null>(null);
+
   const handleStart = () => {
     setScreen("quiz");
     setCurrentQ(0);
