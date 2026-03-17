@@ -28,6 +28,7 @@ const App = () => (
           <Route path="/join" element={<JoinPage />} />
           <Route path="/portfolio" element={<PortfolioPage />} />
           <Route path="/blog" element={<BlogPage />} />
+          <Route path="/betguard" element={<BetGuardPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
