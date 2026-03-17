@@ -11,6 +11,7 @@ import { PartnerPage } from "./pages/PartnerPage";
 import { JoinPage } from "./pages/JoinPage";
 import PortfolioPage from "./pages/PortfolioPage";
 import { BlogPage } from "./pages/BlogPage";
+import BetGuardPage from "./pages/BetGuardPage";
 
 const queryClient = new QueryClient();
 
