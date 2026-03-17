@@ -86,22 +86,15 @@ export const Header = () => {
             Contact
           </button>
           {/* BetGuard AI Button */}
-          <a
-            href="https://betguard-ai-friend.lovable.app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="ml-4"
-            tabIndex={-1}
+          <Button
+            size="lg"
+            onClick={() => navigate('/betguard')}
+            className="ml-4 flex items-center bg-yellow-400 text-black font-bold px-6 py-2 rounded-lg shadow-lg hover:bg-yellow-500 hover:text-black transition-all duration-200 border-2 border-yellow-500"
+            style={{ letterSpacing: ".5px" }}
           >
-            <Button
-              size="lg"
-              className="flex items-center bg-yellow-400 text-black font-bold px-6 py-2 rounded-lg shadow-lg hover:bg-yellow-500 hover:text-black transition-all duration-200 border-2 border-yellow-500"
-              style={{ letterSpacing: ".5px" }}
-            >
-              <LinkIcon className="mr-2" size={20} />
-              BetGuard AI
-            </Button>
-          </a>
+            <LinkIcon className="mr-2" size={20} />
+            BetGuard AI
+          </Button>
         </nav>
 
         {/* Mobile Menu Button */}
