@@ -464,7 +464,36 @@ export default function BetGuardPage() {
                   </DialogContent>
                 </Dialog>
 
-                <Button onClick={handleRestart} variant="outline" className="rounded-full mx-auto mt-4">
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-2">
+                  <Button
+                    onClick={() => {
+                      const doc = generatePDF(score, riskInfo, answers);
+                      doc.save("BetGuard-AI-Results.pdf");
+                    }}
+                    className="rounded-full px-6 bg-gradient-to-r from-[#E91E90] to-[#38BDF8] text-white hover:shadow-lg"
+                  >
+                    <Download className="w-4 h-4 mr-1.5" /> Download PDF
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="rounded-full px-6"
+                    onClick={async () => {
+                      const doc = generatePDF(score, riskInfo, answers);
+                      const blob = doc.output("blob");
+                      const file = new File([blob], "BetGuard-AI-Results.pdf", { type: "application/pdf" });
+                      if (navigator.canShare?.({ files: [file] })) {
+                        await navigator.share({ files: [file], title: "BetGuard AI Results", text: "My BetGuard AI self-check summary" });
+                      } else {
+                        // Fallback: just download
+                        doc.save("BetGuard-AI-Results.pdf");
+                      }
+                    }}
+                  >
+                    <Share2 className="w-4 h-4 mr-1.5" /> Share Summary
+                  </Button>
+                </div>
+
+                <Button onClick={handleRestart} variant="outline" className="rounded-full mx-auto mt-2">
                   <RotateCcw className="w-4 h-4 mr-1" /> Start Over
                 </Button>
               </motion.div>
