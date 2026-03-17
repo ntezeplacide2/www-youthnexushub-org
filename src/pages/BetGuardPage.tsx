@@ -289,6 +289,10 @@ export default function BetGuardPage() {
   const [activeStep, setActiveStep] = useState<NextStepKey | null>(null);
   const [started, setStarted] = useState(false);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
   const handleStart = () => {
     setStarted(true);
     setScreen("quiz");
