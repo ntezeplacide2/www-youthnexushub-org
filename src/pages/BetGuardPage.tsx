@@ -1,11 +1,12 @@
 import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Shield, Heart, Eye, ArrowRight, RotateCcw, Clock, DollarSign, BookOpen, Phone, X, ExternalLink } from "lucide-react";
+import { Shield, Heart, Eye, ArrowRight, RotateCcw, Clock, DollarSign, BookOpen, Phone, X, ExternalLink, Download, Share2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import { jsPDF } from "jspdf";
 
 // --- Data ---
 
@@ -91,6 +92,108 @@ function getRiskLevel(score: number): RiskLevel {
 
 function randomAck() {
   return acknowledgments[Math.floor(Math.random() * acknowledgments.length)];
+}
+
+function generatePDF(score: number, riskInfo: RiskInfo, answers: Record<number, number>) {
+  const doc = new jsPDF();
+  const pageWidth = doc.internal.pageSize.getWidth();
+  const margin = 20;
+  const contentWidth = pageWidth - margin * 2;
+  let y = 20;
+
+  // Header
+  doc.setFillColor(233, 30, 144); // magenta
+  doc.rect(0, 0, pageWidth, 40, "F");
+  doc.setTextColor(255, 255, 255);
+  doc.setFontSize(22);
+  doc.setFont("helvetica", "bold");
+  doc.text("BetGuard AI — Self-Check Summary", margin, 27);
+  doc.setFontSize(10);
+  doc.setFont("helvetica", "normal");
+  doc.text("by Youth Nexus Hub Ltd", margin, 35);
+  y = 52;
+
+  // Date
+  doc.setTextColor(120, 120, 120);
+  doc.setFontSize(10);
+  doc.text(`Date: ${new Date().toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}`, margin, y);
+  y += 12;
+
+  // Score box
+  const riskColors: Record<RiskLevel, [number, number, number]> = {
+    low: [16, 185, 129],
+    moderate: [245, 158, 11],
+    high: [244, 63, 94],
+  };
+  const [r, g, b] = riskColors[riskInfo.level];
+  doc.setFillColor(r, g, b);
+  doc.roundedRect(margin, y, contentWidth, 30, 4, 4, "F");
+  doc.setTextColor(255, 255, 255);
+  doc.setFontSize(18);
+  doc.setFont("helvetica", "bold");
+  doc.text(`${riskInfo.label}  —  Score: ${score} / 36`, margin + 10, y + 19);
+  y += 40;
+
+  // Message
+  doc.setTextColor(50, 50, 50);
+  doc.setFontSize(11);
+  doc.setFont("helvetica", "normal");
+  const messageLines = doc.splitTextToSize(riskInfo.message, contentWidth);
+  doc.text(messageLines, margin, y);
+  y += messageLines.length * 6 + 10;
+
+  // Answers summary
+  doc.setFontSize(14);
+  doc.setFont("helvetica", "bold");
+  doc.setTextColor(30, 30, 30);
+  doc.text("Your Answers", margin, y);
+  y += 8;
+
+  doc.setFontSize(9);
+  doc.setFont("helvetica", "normal");
+  doc.setTextColor(80, 80, 80);
+  questions.forEach((q, i) => {
+    if (y > 270) { doc.addPage(); y = 20; }
+    const answerIdx = answers[i] ?? 0;
+    const answerText = q.answers[answerIdx];
+    const line = `${i + 1}. ${q.text}`;
+    const wrapped = doc.splitTextToSize(line, contentWidth);
+    doc.setFont("helvetica", "bold");
+    doc.text(wrapped, margin, y);
+    y += wrapped.length * 4.5;
+    doc.setFont("helvetica", "normal");
+    doc.setTextColor(100, 100, 100);
+    doc.text(`   → ${answerText}`, margin, y);
+    doc.setTextColor(80, 80, 80);
+    y += 7;
+  });
+
+  y += 6;
+  if (y > 250) { doc.addPage(); y = 20; }
+
+  // Suggested actions
+  doc.setFontSize(14);
+  doc.setFont("helvetica", "bold");
+  doc.setTextColor(30, 30, 30);
+  doc.text("Suggested Actions", margin, y);
+  y += 8;
+  doc.setFontSize(10);
+  doc.setFont("helvetica", "normal");
+  doc.setTextColor(80, 80, 80);
+  riskInfo.actions.forEach((action) => {
+    if (y > 275) { doc.addPage(); y = 20; }
+    doc.text(`•  ${action}`, margin + 4, y);
+    y += 6;
+  });
+
+  y += 8;
+  // Footer
+  doc.setFontSize(8);
+  doc.setTextColor(160, 160, 160);
+  doc.text("This is a self-assessment tool and not a clinical diagnosis. If you need help, please reach out to a professional.", margin, 285);
+  doc.text("© Youth Nexus Hub Ltd — www.youthnexushub.org", margin, 290);
+
+  return doc;
 }
 
 // --- Components ---
@@ -361,7 +464,36 @@ export default function BetGuardPage() {
                   </DialogContent>
                 </Dialog>
 
-                <Button onClick={handleRestart} variant="outline" className="rounded-full mx-auto mt-4">
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-2">
+                  <Button
+                    onClick={() => {
+                      const doc = generatePDF(score, riskInfo, answers);
+                      doc.save("BetGuard-AI-Results.pdf");
+                    }}
+                    className="rounded-full px-6 bg-gradient-to-r from-[#E91E90] to-[#38BDF8] text-white hover:shadow-lg"
+                  >
+                    <Download className="w-4 h-4 mr-1.5" /> Download PDF
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="rounded-full px-6"
+                    onClick={async () => {
+                      const doc = generatePDF(score, riskInfo, answers);
+                      const blob = doc.output("blob");
+                      const file = new File([blob], "BetGuard-AI-Results.pdf", { type: "application/pdf" });
+                      if (navigator.canShare?.({ files: [file] })) {
+                        await navigator.share({ files: [file], title: "BetGuard AI Results", text: "My BetGuard AI self-check summary" });
+                      } else {
+                        // Fallback: just download
+                        doc.save("BetGuard-AI-Results.pdf");
+                      }
+                    }}
+                  >
+                    <Share2 className="w-4 h-4 mr-1.5" /> Share Summary
+                  </Button>
+                </div>
+
+                <Button onClick={handleRestart} variant="outline" className="rounded-full mx-auto mt-2">
                   <RotateCcw className="w-4 h-4 mr-1" /> Start Over
                 </Button>
               </motion.div>
