@@ -317,13 +317,49 @@ export default function BetGuardPage() {
                   <h3 className="font-semibold text-gray-900 mb-3">What would you like to do next?</h3>
                   <div className="grid grid-cols-2 gap-3">
                     {nextStepButtons.map((btn) => (
-                      <button key={btn.label} className="flex items-center gap-2 px-4 py-3 rounded-2xl border border-gray-200 bg-white hover:border-[#E91E90] hover:bg-pink-50 transition-all text-sm font-medium text-gray-800 shadow-sm hover:shadow">
+                      <button key={btn.label} onClick={() => setActiveStep(btn.key)} className="flex items-center gap-2 px-4 py-3 rounded-2xl border border-gray-200 bg-white hover:border-[#E91E90] hover:bg-pink-50 transition-all text-sm font-medium text-gray-800 shadow-sm hover:shadow">
                         <btn.icon className="w-4 h-4 text-[#E91E90]" />
                         {btn.label}
                       </button>
                     ))}
                   </div>
                 </div>
+
+                {/* Next Step Dialog */}
+                <Dialog open={!!activeStep} onOpenChange={(open) => !open && setActiveStep(null)}>
+                  <DialogContent className="max-w-md rounded-2xl">
+                    {activeStep && (
+                      <>
+                        <DialogHeader>
+                          <DialogTitle className="text-xl font-bold text-gray-900">{nextStepContent[activeStep].title}</DialogTitle>
+                          <DialogDescription className="text-gray-500">{nextStepContent[activeStep].description}</DialogDescription>
+                        </DialogHeader>
+                        <ul className="space-y-2 mt-2">
+                          {nextStepContent[activeStep].tips.map((tip, i) => (
+                            <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
+                              <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#E91E90] shrink-0" />
+                              {tip}
+                            </li>
+                          ))}
+                        </ul>
+                        <div className="mt-4 flex flex-col gap-2">
+                          {nextStepContent[activeStep].links.map((link) => (
+                            <a
+                              key={link.label}
+                              href={link.url}
+                              target={link.url.startsWith("http") ? "_blank" : undefined}
+                              rel={link.url.startsWith("http") ? "noopener noreferrer" : undefined}
+                              className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-gray-200 bg-white hover:border-[#38BDF8] hover:bg-sky-50 transition-all text-sm font-medium text-gray-800"
+                            >
+                              <ExternalLink className="w-3.5 h-3.5 text-[#38BDF8]" />
+                              {link.label}
+                            </a>
+                          ))}
+                        </div>
+                      </>
+                    )}
+                  </DialogContent>
+                </Dialog>
 
                 <Button onClick={handleRestart} variant="outline" className="rounded-full mx-auto mt-4">
                   <RotateCcw className="w-4 h-4 mr-1" /> Start Over
