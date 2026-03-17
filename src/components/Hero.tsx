@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Link } from "lucide-react";
+import { Shield } from "lucide-react";
 
 export const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -35,50 +35,29 @@ export const Hero = () => {
           <p className={`text-lg text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed transition-all duration-1000 delay-400 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
-            Youth Nexus Hub Ltd is a youth-led social impact organization equipping young people with digital skills, safe gambling awareness, and tools to lead change in their communities.
+            Youth Nexus Hub Ltd is a youth-led organization using technology, awareness, and digital skills to help young people make smarter and safer life decisions across Africa.
           </p>
           
-          {/* BetGuard AI Button */}
-          <div className={`flex justify-center mb-8 transition-all duration-1000 delay-100 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}>
-            <a 
-              href="https://betguard-ai-friend.lovable.app" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-flex"
-            >
-              <Button
-                size="lg"
-                className="bg-accent hover:bg-primary text-accent-foreground hover:text-primary-foreground px-8 py-4 text-lg font-bold rounded-lg transition-all duration-300 hover:scale-105 shadow-lg ring-2 ring-accent"
-                style={{
-                  letterSpacing: "0.5px",
-                }}
-              >
-                <Link className="mr-2" size={22} />
-                BetGuard AI – Your Safer Gambling Friend
-              </Button>
-            </a>
-          </div>
-
-          <div className={`flex flex-col sm:flex-row gap-4 justify-center items-center transition-all duration-1000 delay-600 ${
+          {/* Primary & Secondary CTAs */}
+          <div className={`flex flex-col sm:flex-row gap-4 justify-center items-center mb-4 transition-all duration-1000 delay-600 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
             <Button 
-              onClick={() => scrollToSection('about')}
+              onClick={() => navigate('/betguard')}
               size="lg" 
-              className="bg-primary hover:bg-accent text-primary-foreground hover:text-accent-foreground px-8 py-4 text-lg font-semibold rounded-lg transition-all duration-300 hover:scale-105 pulse-glow"
+              className="bg-accent hover:bg-primary text-accent-foreground hover:text-primary-foreground px-8 py-4 text-lg font-bold rounded-lg transition-all duration-300 hover:scale-105 pulse-glow shadow-lg ring-2 ring-accent"
             >
-              👉 Explore Our Work
+              <Shield className="mr-2" size={22} />
+              Check Your Gambling Risk
             </Button>
             
             <Button 
-              variant="outline" 
-              size="lg"
-              onClick={() => scrollToSection('programs')}
-              className="border-2 border-primary text-primary hover:bg-success hover:text-success-foreground px-8 py-4 text-lg font-semibold rounded-lg transition-all duration-300 hover:scale-105"
+              onClick={() => scrollToSection('about')}
+              size="lg" 
+              variant="outline"
+              className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground px-8 py-4 text-lg font-semibold rounded-lg transition-all duration-300 hover:scale-105"
             >
-              Join the Movement
+              👉 Explore Our Work
             </Button>
           </div>
 

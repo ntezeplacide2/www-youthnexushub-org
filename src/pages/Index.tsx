@@ -1,28 +1,36 @@
 
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
+import { BetGuardFeature } from "@/components/BetGuardFeature";
+import { UrgencyMessage } from "@/components/UrgencyMessage";
 import { About } from "@/components/About";
 import { Programs } from "@/components/Programs";
+import { TakeAction } from "@/components/TakeAction";
 import { YourStory } from "@/components/YourStory";
 import { PartnerWithUs } from "@/components/PartnerWithUs";
 import { Impact } from "@/components/Impact";
 import { JoinMovement } from "@/components/JoinMovement";
-import { Contact } from "@/components/Contact";
 import { Testimonials } from "@/components/Testimonials";
+import { Contact } from "@/components/Contact";
+import { FinalCTA } from "@/components/FinalCTA";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
       <Hero />
+      <BetGuardFeature />
+      <UrgencyMessage />
       <About />
       <Programs />
+      <TakeAction />
       <YourStory />
       <PartnerWithUs />
       <Impact />
       <JoinMovement />
       <Testimonials />
       <Contact />
+      <FinalCTA />
       
       {/* Footer */}
       <footer className="bg-foreground text-background py-12">

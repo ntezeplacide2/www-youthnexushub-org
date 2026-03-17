@@ -17,7 +17,7 @@ export const About = () => {
             <CardContent className="p-8 lg:p-12">
               <div className="space-y-6 text-lg leading-relaxed text-foreground">
                 <p>
-                  Youth Nexus Hub Ltd was founded with a clear purpose: to help young people in Rwanda and across Africa make smarter choices in a fast-changing world. What started as a passion to raise awareness about gambling harm has grown into a mission to empower youth through digital tools, creative skills, and purpose-driven leadership.
+                  Youth Nexus Hub Ltd was founded to help young people in Rwanda and across Africa make smarter choices in a fast-changing digital world. After observing the growing impact of gambling and digital risks, we set out to combine awareness, technology, and youth empowerment to create real solutions.
                 </p>
                 
                 <div className="bg-accent/10 p-6 rounded-lg border-l-4 border-accent">
