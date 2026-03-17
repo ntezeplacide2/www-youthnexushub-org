@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   Shield, Heart, Eye, ArrowRight, RotateCcw, Clock, DollarSign,
   BookOpen, Phone, ExternalLink, Download, Share2, AlertTriangle,
-  CheckCircle, Users, Brain, HandHeart
+  CheckCircle, Users, Brain, HandHeart, ListChecks, Lock, MessageCircle
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
@@ -298,7 +298,6 @@ export default function BetGuardPage() {
     setScreen("quiz");
     setCurrentQ(0);
     setAnswers({});
-    // Scroll to the assessment section
     setTimeout(() => {
       document.getElementById("betguard-assessment")?.scrollIntoView({ behavior: "smooth" });
     }, 100);
@@ -377,7 +376,7 @@ export default function BetGuardPage() {
                 size="lg"
                 className="rounded-full px-8 py-6 text-lg font-semibold bg-gradient-to-r from-[#E91E90] to-[#38BDF8] text-white shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all h-auto"
               >
-                Start Your Check-In <ArrowRight className="ml-2 w-5 h-5" />
+                Start Your 3-Minute Check-In <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
               <Button
                 variant="outline"
@@ -388,6 +387,28 @@ export default function BetGuardPage() {
                 Learn About Safe Gambling
               </Button>
             </div>
+
+            {/* Reassurance line */}
+            <p className="mt-6 text-sm text-muted-foreground">
+              You'll answer 12 quick questions and get instant feedback on your risk level.
+            </p>
+
+            {/* Time indicator */}
+            <div className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-[#38BDF8]">
+              <Clock className="w-4 h-4" />
+              ⏱ Takes less than 3 minutes
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Urgency / Reality Message */}
+      <section className="py-10 bg-background">
+        <div className="container mx-auto px-6">
+          <div className="max-w-2xl mx-auto text-center">
+            <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+              Many people only realize the impact of gambling when it's already affecting their finances or stress levels. A quick check today can help you stay in control.
+            </p>
           </div>
         </div>
       </section>
@@ -400,7 +421,7 @@ export default function BetGuardPage() {
               Why This Matters
             </h2>
             <p className="text-lg text-muted-foreground">
-              Gambling can go from fun to harmful without you noticing. A quick check-in helps you stay aware and in control.
+              Gambling can shift from entertainment to a problem without clear warning signs. A quick check-in helps you stay aware, in control, and ahead of potential risks.
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
@@ -441,6 +462,32 @@ export default function BetGuardPage() {
         </div>
       </section>
 
+      {/* What to Expect Micro Section */}
+      <section className="py-14 bg-background">
+        <div className="container mx-auto px-6">
+          <div className="max-w-3xl mx-auto text-center mb-10">
+            <h2 className="text-2xl md:text-3xl font-bold mb-3" style={{ color: "hsl(var(--primary))" }}>
+              What to Expect
+            </h2>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
+            {[
+              { icon: ListChecks, label: "12 quick questions", accent: "#E91E90" },
+              { icon: Clock, label: "Takes about 2–3 minutes", accent: "#38BDF8" },
+              { icon: CheckCircle, label: "Instant personalized feedback", accent: "#E91E90" },
+              { icon: Lock, label: "Completely private and anonymous", accent: "#38BDF8" },
+            ].map((item, i) => (
+              <div key={i} className="flex flex-col items-center gap-3 p-5 rounded-2xl bg-secondary shadow-sm border border-border text-center">
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ backgroundColor: `${item.accent}15` }}>
+                  <item.icon className="w-5 h-5" style={{ color: item.accent }} />
+                </div>
+                <span className="text-sm font-medium text-foreground">{item.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* BetGuard AI Assessment Tool */}
       <section id="betguard-assessment" className="py-20 bg-background">
         <div className="container mx-auto px-6">
@@ -460,7 +507,7 @@ export default function BetGuardPage() {
                   onClick={handleStart}
                   className="rounded-full px-8 py-3 text-base font-semibold bg-gradient-to-r from-[#E91E90] to-[#38BDF8] text-white shadow-md hover:shadow-lg hover:scale-[1.02] transition-all h-auto"
                 >
-                  Start Check-In <ArrowRight className="ml-1 w-4 h-4" />
+                  Start Your 3-Minute Check-In <ArrowRight className="ml-1 w-4 h-4" />
                 </Button>
               </div>
             ) : (
@@ -656,10 +703,37 @@ export default function BetGuardPage() {
             <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: "hsl(var(--primary))" }}>
               Need Extra Support?
             </h2>
-            <p className="text-lg text-muted-foreground">
-              You don't have to face this alone. These organisations offer free, confidential help.
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              You don't have to face this alone. If gambling is affecting your finances, stress levels, or relationships, support is available. Taking action early can make a big difference.
             </p>
           </div>
+
+          {/* Local Support Options */}
+          <div className="max-w-3xl mx-auto mb-14">
+            <h3 className="text-2xl font-bold text-center mb-3" style={{ color: "hsl(var(--primary))" }}>
+              Local Support Options
+            </h3>
+            <p className="text-center text-muted-foreground mb-8">
+              If you're in Rwanda or nearby regions, you can also seek support through people and services around you.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
+              {[
+                { icon: Users, label: "Talk to a trusted friend or family member", accent: "#E91E90" },
+                { icon: Heart, label: "Reach out to a local counselor or health center", accent: "#38BDF8" },
+                { icon: MessageCircle, label: "Speak with a community or faith leader", accent: "#E91E90" },
+                { icon: Shield, label: "Contact Youth Nexus Hub for guidance (future support)", accent: "#38BDF8" },
+              ].map((item, i) => (
+                <div key={i} className="flex items-center gap-3 p-4 rounded-2xl bg-background shadow-sm border border-border">
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ backgroundColor: `${item.accent}15` }}>
+                    <item.icon className="w-5 h-5" style={{ color: item.accent }} />
+                  </div>
+                  <span className="text-sm font-medium text-foreground">{item.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Global Resources */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
             {[
               { name: "GamCare", desc: "Free support, advice, and counselling for anyone affected by gambling.", url: "https://www.gamcare.org.uk/", color: "#E91E90" },
@@ -709,7 +783,7 @@ export default function BetGuardPage() {
           </div>
           <div className="text-sm opacity-75">
             <p>© {new Date().getFullYear()} Youth Nexus Hub Ltd. Based in Kigali, Rwanda.</p>
-            <p className="mt-2">BetGuard AI — A safer gambling self-check tool by Youth Nexus Hub.</p>
+            <p className="mt-2">BetGuard AI is a youth-focused safer gambling tool built by Youth Nexus Hub Ltd to help individuals reflect, stay in control, and make smarter decisions.</p>
           </div>
         </div>
       </footer>
