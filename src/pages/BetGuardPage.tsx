@@ -97,12 +97,79 @@ function randomAck() {
 
 type Screen = "welcome" | "quiz" | "ack" | "results";
 
-const nextStepButtons = [
-  { label: "Set a spending limit", icon: DollarSign },
-  { label: "Take a break plan", icon: Clock },
-  { label: "Learn safer habits", icon: BookOpen },
-  { label: "Get support", icon: Phone },
+type NextStepKey = "spending" | "break" | "habits" | "support";
+
+const nextStepButtons: { label: string; icon: typeof DollarSign; key: NextStepKey }[] = [
+  { label: "Set a spending limit", icon: DollarSign, key: "spending" },
+  { label: "Take a break plan", icon: Clock, key: "break" },
+  { label: "Learn safer habits", icon: BookOpen, key: "habits" },
+  { label: "Get support", icon: Phone, key: "support" },
 ];
+
+const nextStepContent: Record<NextStepKey, { title: string; description: string; tips: string[]; links: { label: string; url: string }[] }> = {
+  spending: {
+    title: "Set a Spending Limit",
+    description: "Setting a clear budget before you gamble helps you stay in control. Here's how to get started:",
+    tips: [
+      "Decide on a fixed weekly amount you can afford to lose — and stick to it.",
+      "Use a budgeting app or notebook to track every bet.",
+      "Never use money meant for rent, bills, or essentials.",
+      "Set deposit limits on betting platforms (most allow this in settings).",
+      "Review your spending at the end of each week.",
+    ],
+    links: [
+      { label: "GambleAware Budget Tool", url: "https://www.begambleaware.org/" },
+      { label: "GamCare Money Advice", url: "https://www.gamcare.org.uk/" },
+    ],
+  },
+  break: {
+    title: "Take a Break Plan",
+    description: "Taking a break from gambling gives you space to reset. Try this step-by-step plan:",
+    tips: [
+      "Commit to at least 7 days with no gambling of any kind.",
+      "Delete or log out of betting apps during your break.",
+      "Fill your time with activities you enjoy — exercise, hobbies, socialising.",
+      "Tell a friend or family member about your break for accountability.",
+      "Use self-exclusion tools like GAMSTOP to block access to UK gambling sites.",
+    ],
+    links: [
+      { label: "GAMSTOP Self-Exclusion", url: "https://www.gamstop.co.uk/" },
+      { label: "TalkBanStop Support", url: "https://www.talkbanstop.com/" },
+    ],
+  },
+  habits: {
+    title: "Learn Safer Gambling Habits",
+    description: "Knowledge is power. Understanding gambling risks helps you make better choices:",
+    tips: [
+      "Treat gambling as entertainment, not a way to make money.",
+      "Set time limits as well as money limits.",
+      "Never chase losses — the odds are designed against you.",
+      "Avoid gambling when you're stressed, upset, or under the influence.",
+      "Learn how odds work — the house always has an edge.",
+    ],
+    links: [
+      { label: "BeGambleAware Resources", url: "https://www.begambleaware.org/" },
+      { label: "Young Gamers & Gamblers Education Trust", url: "https://www.ygam.org/" },
+      { label: "Youth Nexus Hub Programs", url: "/" },
+    ],
+  },
+  support: {
+    title: "Get Support",
+    description: "You don't have to face this alone. Reaching out is a sign of strength, not weakness.",
+    tips: [
+      "Talk to someone you trust — a friend, family member, or mentor.",
+      "Call the National Gambling Helpline: 0808 8020 133 (free, 24/7).",
+      "Chat online with trained advisors at GamCare.",
+      "Consider joining a peer support group.",
+      "Youth Nexus Hub is here for you — reach out to us anytime.",
+    ],
+    links: [
+      { label: "GamCare Live Chat", url: "https://www.gamcare.org.uk/" },
+      { label: "National Gambling Helpline", url: "tel:08088020133" },
+      { label: "Contact Youth Nexus Hub", url: "/partner" },
+    ],
+  },
+};
 
 const fadeVariants = {
   initial: { opacity: 0, y: 24 },
