@@ -1,8 +1,9 @@
 import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Shield, Heart, Eye, ArrowRight, RotateCcw, Clock, DollarSign, BookOpen, Phone } from "lucide-react";
+import { Shield, Heart, Eye, ArrowRight, RotateCcw, Clock, DollarSign, BookOpen, Phone, X, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 
