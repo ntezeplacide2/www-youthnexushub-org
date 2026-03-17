@@ -91,7 +91,7 @@ export const Impact = () => {
             Our Impact
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Measuring change, celebrating progress, and building momentum for a brighter future
+            We're already making a difference across communities. Here's the impact we've created so far.
           </p>
           <div className="w-24 h-1 bg-gradient-to-r from-purple-600 to-blue-600 mx-auto rounded-full mt-6"></div>
         </div>
