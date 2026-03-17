@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Shield, Heart, Eye, ArrowRight, RotateCcw, Clock, DollarSign,
@@ -288,6 +288,10 @@ export default function BetGuardPage() {
   const [ackText, setAckText] = useState("");
   const [activeStep, setActiveStep] = useState<NextStepKey | null>(null);
   const [started, setStarted] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   const handleStart = () => {
     setStarted(true);
