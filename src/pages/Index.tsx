@@ -34,11 +34,17 @@ const Index = () => {
       <FinalCTA />
       
       {/* Authority Line */}
-      <div className="bg-primary/5 py-6">
+      <motion.div
+        className="bg-primary/5 py-6"
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
         <p className="text-center text-md font-medium text-foreground/80 max-w-3xl mx-auto px-6">
           Youth Nexus Hub Ltd — Building awareness, tools, and opportunities for safer, smarter youth across Africa.
         </p>
-      </div>
+      </motion.div>
 
       {/* Footer */}
       <footer className="bg-foreground text-background py-12">
