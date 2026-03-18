@@ -46,6 +46,9 @@ export const BetGuardFeature = () => {
           <p className="mt-4 text-sm text-muted-foreground">
             No signup required. Completely confidential.
           </p>
+          <p className="mt-3 text-sm font-medium text-foreground/80">
+            Already helping young people reflect on their habits and make safer decisions.
+          </p>
         </div>
       </div>
     </section>

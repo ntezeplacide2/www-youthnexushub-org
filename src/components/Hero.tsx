@@ -60,6 +60,11 @@ export const Hero = () => {
               👉 Explore Our Work
             </Button>
           </div>
+          <p className={`mt-3 text-sm text-muted-foreground transition-all duration-1000 delay-700 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
+            Start with a quick 3-minute check to understand your habits and stay in control.
+          </p>
 
           {/* Additional CTA buttons */}
           <div className={`mt-8 flex flex-wrap gap-3 justify-center transition-all duration-1000 delay-800 ${

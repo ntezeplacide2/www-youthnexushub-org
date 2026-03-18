@@ -10,10 +10,10 @@ export const FinalCTA = () => {
     <section className="py-20 bg-gradient-to-br from-accent/10 to-primary/10">
       <div className="container mx-auto px-6 text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
-          Start with one simple step
+          Take control today
         </h2>
         <p className="text-lg text-muted-foreground max-w-xl mx-auto mb-8 leading-relaxed">
-          Take 3 minutes to check your gambling habits and stay in control.
+          It only takes 3 minutes to understand your habits and make safer decisions.
         </p>
         <Button
           onClick={() => navigate('/betguard')}
