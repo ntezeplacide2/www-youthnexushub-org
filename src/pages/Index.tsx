@@ -32,6 +32,13 @@ const Index = () => {
       <Contact />
       <FinalCTA />
       
+      {/* Authority Line */}
+      <div className="bg-primary/5 py-6">
+        <p className="text-center text-md font-medium text-foreground/80 max-w-3xl mx-auto px-6">
+          Youth Nexus Hub Ltd — Building awareness, tools, and opportunities for safer, smarter youth across Africa.
+        </p>
+      </div>
+
       {/* Footer */}
       <footer className="bg-foreground text-background py-12">
         <div className="container mx-auto px-6 text-center">

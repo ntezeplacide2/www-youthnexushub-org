@@ -15,6 +15,9 @@ export const TakeAction = () => {
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
           Whether you want to understand your habits, learn new skills, or support others, there's a place for you at Youth Nexus Hub.
         </p>
+        <p className="text-md text-foreground/70 italic max-w-xl mx-auto mb-10">
+          Small steps today can prevent bigger challenges tomorrow.
+        </p>
         <div className="flex flex-wrap gap-4 justify-center">
           <Button
             onClick={() => navigate('/betguard')}

@@ -18,7 +18,7 @@ export const BetGuardFeature = () => {
         <div className="max-w-4xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 bg-accent/10 text-accent-foreground px-4 py-2 rounded-full mb-6 font-medium">
             <Shield className="h-5 w-5" />
-            Featured Tool
+            Start Here: BetGuard AI
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
             BetGuard AI – Your Safer Gambling Friend
@@ -45,6 +45,9 @@ export const BetGuardFeature = () => {
           </Button>
           <p className="mt-4 text-sm text-muted-foreground">
             No signup required. Completely confidential.
+          </p>
+          <p className="mt-3 text-sm font-medium text-foreground/80">
+            Already helping young people reflect on their habits and make safer decisions.
           </p>
         </div>
       </div>
