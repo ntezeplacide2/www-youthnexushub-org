@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { Shield } from "lucide-react";
+import { motion } from "framer-motion";
 
 export const TakeAction = () => {
   const navigate = useNavigate();
@@ -15,9 +16,15 @@ export const TakeAction = () => {
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
           Whether you want to understand your habits, learn new skills, or support others, there's a place for you at Youth Nexus Hub.
         </p>
-        <p className="text-md text-foreground/70 italic max-w-xl mx-auto mb-10">
+        <motion.p
+          className="text-md text-foreground/70 italic max-w-xl mx-auto mb-10"
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
           Small steps today can prevent bigger challenges tomorrow.
-        </p>
+        </motion.p>
         <div className="flex flex-wrap gap-4 justify-center">
           <Button
             onClick={() => navigate('/betguard')}
