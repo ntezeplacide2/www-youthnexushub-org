@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Shield } from "lucide-react";
+import { Shield, Handshake, HeartHandshake, BookOpen } from "lucide-react";
 
 export const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
