@@ -12,7 +12,7 @@ export const JoinMovement = () => {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-10 fade-in">
             <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
-              ✊ Join the Movement
+              <Users className="inline mr-2 h-8 w-8" /> Join the Movement
             </h2>
             <div className="w-20 h-1 bg-primary mx-auto rounded-full mb-6"></div>
             <p className="text-xl text-foreground leading-relaxed max-w-3xl mx-auto mb-8">
@@ -44,7 +44,7 @@ export const JoinMovement = () => {
               size="lg"
               className="bg-success hover:bg-success/90 text-success-foreground px-8 py-4 text-lg font-semibold rounded-lg transition-all duration-300 hover:scale-105"
             >
-              ✊ Join as a Volunteer
+              <Users className="mr-2 h-5 w-5" /> Join as a Volunteer
             </Button>
             <p className="text-sm text-muted-foreground mt-3">
               Flexible time commitment • Training provided • Make real impact

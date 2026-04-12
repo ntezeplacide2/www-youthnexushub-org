@@ -25,7 +25,7 @@ export const PartnerPage = () => {
             
             <div className="text-center">
               <h1 className="text-3xl md:text-4xl font-bold text-primary mb-6">
-                🤝 Partner With Us
+                Partner With Us
               </h1>
               <div className="w-20 h-1 bg-primary mx-auto rounded-full mb-6"></div>
               <p className="text-xl text-foreground leading-relaxed max-w-3xl mx-auto">

@@ -12,7 +12,7 @@ export const PartnerWithUs = () => {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-10 fade-in">
             <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
-              🤝 Partner With Us
+              <Handshake className="inline mr-2 h-8 w-8" /> Partner With Us
             </h2>
             <div className="w-20 h-1 bg-primary mx-auto rounded-full mb-6"></div>
             <p className="text-xl text-foreground leading-relaxed max-w-3xl mx-auto mb-8">
@@ -44,7 +44,7 @@ export const PartnerWithUs = () => {
               size="lg"
               className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 text-lg font-semibold rounded-lg transition-all duration-300 hover:scale-105"
             >
-              🤝 Become a Partner
+              <Handshake className="mr-2 h-5 w-5" /> Become a Partner
             </Button>
             <p className="text-sm text-muted-foreground mt-3">
               Quick partnership inquiry • Get response within 24 hours
