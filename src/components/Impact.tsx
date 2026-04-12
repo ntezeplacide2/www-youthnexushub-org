@@ -54,28 +54,28 @@ const AnimatedCounter = ({ end, duration = 2000, suffix = "" }: { end: number; d
 export const Impact = () => {
   const impacts = [
     {
-      icon: "🎯",
+      icon: <Target className="h-10 w-10 text-purple-600" />,
       title: "Youth Reached",
       value: 500,
       suffix: "+",
       description: "Young people engaged through our programs and campaigns"
     },
     {
-      icon: "🏫",
+      icon: <School className="h-10 w-10 text-purple-600" />,
       title: "Schools Visited",
       value: 25,
       suffix: "+",
       description: "Educational institutions where we've delivered awareness sessions"
     },
     {
-      icon: "📱",
+      icon: <Smartphone className="h-10 w-10 text-purple-600" />,
       title: "Digital Skills Trained",
       value: 200,
       suffix: "+",
       description: "Youth equipped with practical digital and media skills"
     },
     {
-      icon: "🤝",
+      icon: <Handshake className="h-10 w-10 text-purple-600" />,
       title: "Community Events",
       value: 15,
       suffix: "+",
@@ -104,7 +104,7 @@ export const Impact = () => {
               style={{ animationDelay: `${index * 200}ms` }}
             >
               <CardHeader className="pb-4">
-                <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">{impact.icon}</div>
+                <div className="mb-4 group-hover:scale-110 transition-transform duration-300 flex justify-center">{impact.icon}</div>
                 <AnimatedCounter end={impact.value} suffix={impact.suffix} />
                 <h3 className="text-xl font-semibold text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
                   {impact.title}

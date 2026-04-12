@@ -75,7 +75,7 @@ export const Hero = () => {
               onClick={() => navigate('/partner')}
               className="text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-105"
             >
-              🤝 Become a Partner
+              <Handshake className="mr-1 h-4 w-4" /> Become a Partner
             </Button>
             
             <Button 
@@ -83,7 +83,7 @@ export const Hero = () => {
               onClick={() => navigate('/join')}
               className="text-primary hover:bg-success hover:text-success-foreground transition-all duration-300 hover:scale-105"
             >
-              ✊ Join as a Volunteer
+              <HeartHandshake className="mr-1 h-4 w-4" /> Join as a Volunteer
             </Button>
             
             <Button 
@@ -91,7 +91,7 @@ export const Hero = () => {
               onClick={() => navigate('/share-story')}
               className="text-primary hover:bg-accent hover:text-accent-foreground transition-all duration-300 hover:scale-105"
             >
-              📖 Share Your Story
+              <BookOpen className="mr-1 h-4 w-4" /> Share Your Story
             </Button>
           </div>
         </div>

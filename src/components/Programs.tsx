@@ -1,31 +1,32 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Dice5, Monitor, Users, Sprout } from "lucide-react";
 
 export const Programs = () => {
   const programs = [
     {
-      icon: "🎲",
+      icon: <Dice5 className="h-8 w-8 text-red-500" />,
       title: "Think Before You Bet",
       description: "An awareness campaign using storytelling, videos, and school outreach to help youth understand the risks of irresponsible gambling.",
       status: "Active",
       color: "bg-red-50 border-red-200 hover:bg-red-100"
     },
     {
-      icon: "💻",
+      icon: <Monitor className="h-8 w-8 text-blue-500" />,
       title: "Youth Digital Lab",
       description: "Workshops and training sessions in media production, data storytelling, and digital advocacy, giving youth practical skills to make impact.",
       status: "Active",
       color: "bg-blue-50 border-blue-200 hover:bg-blue-100"
     },
     {
-      icon: "🤝",
+      icon: <Users className="h-8 w-8 text-green-600" />,
       title: "Community Dialogues",
       description: "Events and safe spaces where parents, teachers, and young people come together to discuss digital harm, resilience, and responsible living.",
       status: "Active",
       color: "bg-success/10 border-success/20 hover:bg-success/20"
     },
     {
-      icon: "🌱",
+      icon: <Sprout className="h-8 w-8 text-accent" />,
       title: "Youth Impact Studio",
       description: "A support and mentoring hub for young changemakers building social innovation projects in their communities.",
       status: "Coming Soon",
@@ -55,7 +56,7 @@ export const Programs = () => {
             >
               <CardHeader>
                 <div className="flex items-center justify-between mb-4">
-                  <div className="text-4xl group-hover:scale-110 transition-transform duration-300">{program.icon}</div>
+                  <div className="group-hover:scale-110 transition-transform duration-300">{program.icon}</div>
                   <span className={`px-3 py-1 rounded-full text-sm font-medium transition-all duration-300 ${
                     program.status === 'Coming Soon' 
                       ? 'bg-accent/20 text-accent-foreground group-hover:bg-accent/30' 
