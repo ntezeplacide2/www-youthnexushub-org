@@ -1,7 +1,7 @@
 
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-import { Shield } from "lucide-react";
+import { Shield, Handshake, HeartHandshake } from "lucide-react";
 import { motion } from "framer-motion";
 
 export const TakeAction = () => {
@@ -40,7 +40,7 @@ export const TakeAction = () => {
             variant="outline"
             className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground px-8 py-4 text-lg font-semibold rounded-lg transition-all duration-300 hover:scale-105"
           >
-            🤝 Become a Partner
+            <Handshake className="mr-2" size={20} /> Become a Partner
           </Button>
           <Button
             onClick={() => navigate('/join')}
@@ -48,7 +48,7 @@ export const TakeAction = () => {
             variant="outline"
             className="border-2 border-primary text-primary hover:bg-success hover:text-success-foreground px-8 py-4 text-lg font-semibold rounded-lg transition-all duration-300 hover:scale-105"
           >
-            ✊ Join as a Volunteer
+            <HeartHandshake className="mr-2" size={20} /> Join as a Volunteer
           </Button>
         </div>
       </div>
