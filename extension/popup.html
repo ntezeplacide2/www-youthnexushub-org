@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BetGuard Blocker</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <!-- Header / branding -->
+      <header class="header">
+        <div class="logo-dot"></div>
+        <div>
+          <h1>BetGuard Blocker</h1>
+          <p class="tagline">Take control before gambling controls you.</p>
+        </div>
+      </header>
+
+      <!-- Status card -->
+      <section class="card status-card" id="statusCard">
+        <div class="status-row">
+          <span class="status-label">Status</span>
+          <span class="badge" id="statusBadge">Not active</span>
+        </div>
+        <div class="status-row" id="remainingRow" style="display:none">
+          <span class="status-label">Time remaining</span>
+          <span class="status-value" id="remainingTime">—</span>
+        </div>
+        <div class="status-row">
+          <span class="status-label">Blocked attempts</span>
+          <span class="status-value" id="attemptsCount">0</span>
+        </div>
+      </section>
+
+      <!-- Welcome / explanation -->
+      <section class="card" id="welcomeCard">
+        <p class="muted small">
+          Block gambling and betting sites for a set time and protect your focus,
+          money, and peace of mind.
+        </p>
+      </section>
+
+      <!-- Duration picker -->
+      <section class="card">
+        <h2 class="section-title">Choose blocking time</h2>
+        <div class="duration-grid">
+          <button class="duration-btn" data-hours="1">1 hour</button>
+          <button class="duration-btn" data-hours="24">24 hours</button>
+          <button class="duration-btn" data-hours="168">7 days</button>
+          <button class="duration-btn" data-hours="720">30 days</button>
+        </div>
+        <div class="custom-row">
+          <input
+            type="number"
+            id="customHours"
+            min="1"
+            max="8760"
+            placeholder="Custom hours"
+          />
+          <button class="btn btn-secondary" id="customStartBtn">Start custom</button>
+        </div>
+      </section>
+
+      <!-- Emergency button -->
+      <section class="card emergency-card">
+        <h2 class="section-title">Feeling tempted?</h2>
+        <button class="btn btn-emergency" id="emergencyBtn">
+          I feel tempted — block gambling now (24h)
+        </button>
+      </section>
+
+      <!-- Custom domains -->
+      <section class="card">
+        <h2 class="section-title">Custom blocked sites</h2>
+        <div class="add-row">
+          <input type="text" id="customDomain" placeholder="example.com" />
+          <button class="btn btn-secondary" id="addDomainBtn">Add</button>
+        </div>
+        <ul class="domain-list" id="customList"></ul>
+
+        <details class="defaults">
+          <summary>Default blocked sites</summary>
+          <ul class="domain-list" id="defaultList"></ul>
+        </details>
+      </section>
+
+      <!-- Stop / privacy -->
+      <section class="card">
+        <button class="btn btn-ghost" id="stopBtn">Stop blocking</button>
+        <p class="privacy">
+          BetGuard Blocker stores your settings only on your device.
+          We do not collect your gambling history or personal information.
+        </p>
+      </section>
+
+      <footer class="footer">
+        Youth Nexus Hub Ltd
+      </footer>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
