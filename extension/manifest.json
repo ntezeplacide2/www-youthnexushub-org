@@ -1,0 +1,42 @@
+{
+  "manifest_version": 3,
+  "name": "BetGuard Blocker — Safe Gambling Protection",
+  "version": "1.0.0",
+  "description": "Block gambling and betting sites for a chosen period of time. By Youth Nexus Hub Ltd.",
+  "author": "Youth Nexus Hub Ltd",
+
+  "permissions": [
+    "storage",
+    "tabs",
+    "webNavigation",
+    "alarms"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "BetGuard Blocker",
+    "default_icon": {
+      "48": "icons/icon.png",
+      "128": "icons/icon.png"
+    }
+  },
+
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "icons": {
+    "48": "icons/icon.png",
+    "128": "icons/icon.png"
+  },
+
+  "web_accessible_resources": [
+    {
+      "resources": ["blocked.html"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
